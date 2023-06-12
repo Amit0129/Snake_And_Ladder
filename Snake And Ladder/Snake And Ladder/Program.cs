@@ -36,12 +36,14 @@ namespace Snake_And_Ladder
 
             int position = 0;
             int winPosition = 100;
+            int diceCount = 0;
+
             Console.WriteLine("Playear position now is {0}", position);
             Random random = new Random();
 
             while (position < 100)
             {
-
+                diceCount++;
 
                 int rollDice = random.Next(1, 7);
                 Console.WriteLine($"The value of dice after roll is : {rollDice}");
@@ -63,6 +65,7 @@ namespace Snake_And_Ladder
                         break;
                 }
             }
+            Console.WriteLine($"Total number of dice played to win is : {diceCount}");
         }
     }
 }
