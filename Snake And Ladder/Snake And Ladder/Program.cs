@@ -1,4 +1,6 @@
-﻿namespace Snake_And_Ladder
+﻿using System;
+
+namespace Snake_And_Ladder
 {
     internal class Program
     {
@@ -26,38 +28,34 @@
         {
 
             Console.WriteLine("Welcome to Snake And Ladder game!");
+
             int position = 0;
-            Console.WriteLine("Player now in {0}th position", position);
-         
+            Console.WriteLine("Playear position now is {0}", position);
             Random random = new Random();
-            int diceRoll = random.Next(1, 7);
-            Console.WriteLine($"The value of dice after roll is : {diceRoll}");
-            int optionCheck = random.Next(1, 4);
-            
-            switch (optionCheck)
+
+            while (position < 100)
             {
-                case 1:
-                    position = No_play(position);
-                    //Console.WriteLine($"The Player position is : {position}");
-                    Console.WriteLine("NNNNNNNNNN");
-                    Console.WriteLine("Playear position now is {0}", position);
-                    break;
-                case 2:
-                    position = Ladder(position, diceRoll);
-                    //position += diceRoll;
-                    Console.WriteLine("LLLLLLLLLLLL");
-                    Console.WriteLine("Playear position now is {0}", position);
-                    break;
-                default:
-                    position = Snake(position, diceRoll);
-                    //position -= diceRoll;
-                    //if (position < 0)
-                    //{
-                    //    position = 0;
-                    //}
-                    Console.WriteLine("SSSSSSSSSSSS");
-                    Console.WriteLine("Playear position now is {0}", position);
-                    break;
+
+
+                int rollDice = random.Next(1, 7);
+                Console.WriteLine($"The value of dice after roll is : {rollDice}");
+
+                int checkOption = random.Next(1, 4);
+                Console.WriteLine("Check Option is {0}", checkOption);
+
+                switch (checkOption)
+                {
+                    case 1:
+                        position = No_play(position);
+
+                        break;
+                    case 2:
+                        position = Ladder(position, rollDice);
+                        break;
+                    case 3:
+                        position = Snake(position, rollDice);
+                        break;
+                }
             }
         }
     }
