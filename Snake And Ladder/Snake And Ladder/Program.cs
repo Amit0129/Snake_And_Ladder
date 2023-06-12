@@ -9,9 +9,14 @@ namespace Snake_And_Ladder
             Console.WriteLine($"The Player position is : {position}");
             return position;
         }
-        public static int Ladder(int position, int diceRoll)
+        public static int Ladder(int position, int roll, int winPosition)
         {
-            position += diceRoll;
+            position += roll;
+            if (position > winPosition)
+            {
+                position -= roll;
+            }
+            Console.WriteLine("Playear position now is {0}", position);
             return position;
         }
         public static int Snake(int position, int diceRoll)
@@ -30,6 +35,7 @@ namespace Snake_And_Ladder
             Console.WriteLine("Welcome to Snake And Ladder game!");
 
             int position = 0;
+            int winPosition = 100;
             Console.WriteLine("Playear position now is {0}", position);
             Random random = new Random();
 
@@ -50,7 +56,7 @@ namespace Snake_And_Ladder
 
                         break;
                     case 2:
-                        position = Ladder(position, rollDice);
+                        position = Ladder(position, rollDice, winPosition);
                         break;
                     case 3:
                         position = Snake(position, rollDice);
